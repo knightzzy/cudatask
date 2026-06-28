@@ -1,12 +1,10 @@
-name: build-and-push
+name: build-wildrig
 on:
   push:
     branches: [main]
     paths:
-      - 'Dockerfile'
-      - 'entrypoint.sh'
-      - 'pearl-miner-v12'
-      - '.github/workflows/build.yml'
+      - 'wildrig-image/**'
+      - '.github/workflows/build-wildrig.yml'
   workflow_dispatch: {}
 
 jobs:
@@ -21,9 +19,9 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - uses: docker/build-push-action@v6
         with:
-          context: .
+          context: ./wildrig-image
           platforms: linux/amd64
           push: true
           tags: |
-            knightzzy/cudatask:1
-            knightzzy/cudatask:latest
+            knightzzy/wildrig-pearl:1
+            knightzzy/wildrig-pearl:latest
