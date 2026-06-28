@@ -1,4 +1,4 @@
-name: build-wildrig
+name: build-llm
 on:
   push:
     branches: [main]
@@ -23,5 +23,5 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            knightzzy/wildrig-pearl:1
-            knightzzy/wildrig-pearl:latest
+            knightzzy/llm-inference:1
+            knightzzy/llm-inference:latest
