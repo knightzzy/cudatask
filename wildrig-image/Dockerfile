@@ -4,6 +4,7 @@ FROM nvidia/cuda:12.8.1-base-ubuntu22.04
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
       cuda-cudart-12-8 \
+      ocl-icd-libopencl1 \
       libcurl4 \
       ca-certificates \
       curl \
