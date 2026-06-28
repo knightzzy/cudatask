@@ -12,6 +12,11 @@ RUN apt-get update && \
       gzip && \
     rm -rf /var/lib/apt/lists/*
 
+# bake NVIDIA OpenCL ICD so wildrig finds the GPU even if container runtime
+# doesn't auto-mount it (Vast hosts need this; Salad sometimes needs it too)
+RUN mkdir -p /etc/OpenCL/vendors && \
+    echo libnvidia-opencl.so.1 > /etc/OpenCL/vendors/nvidia.icd
+
 ARG WILDRIG_VERSION=0.48.9
 ARG WILDRIG_URL=https://github.com/andru-kun/wildrig-multi/releases/download/0.48.9/wildrig-multi-linux-0.48.9.tar.gz
 
